@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
+    android:clipToPadding="false"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/Labeltext"
+        android:layout_width="331dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:padding="15dp"
+        android:text="Nice Luck After  00 Times"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
+
+    <LinearLayout
+        android:layout_width="318dp"
+        android:layout_height="82dp"
+        android:layout_gravity="right"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:padding="10dp"
+            android:text="Continue"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:textStyle="normal|bold" />
+
+        <TextView
+            android:id="@+id/okButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.19"
+            android:clickable="true"
+            android:elevation="0dp"
+            android:padding="10dp"
+            android:text="Finish"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:textStyle="normal|bold" />
+    </LinearLayout>
+
+</LinearLayout>

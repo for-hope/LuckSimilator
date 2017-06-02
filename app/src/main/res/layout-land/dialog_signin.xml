@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/colorEdgeEffect"
+    android:clipToPadding="false"
+    android:weightSum="1">
+
+    <TextView
+        android:text="Label"
+        android:layout_width="331dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/Labeltext"
+        android:textSize="18sp"
+        android:textColor="@android:color/background_light"
+        android:textAllCaps="false"
+        android:padding="15dp"
+        android:fontFamily="monospace"
+        android:textStyle="normal|bold" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/getLabel"
+        android:padding="10dp"
+        android:textColor="@android:color/white" />
+
+    <LinearLayout
+        android:layout_width="141dp"
+        android:layout_height="82dp"
+        android:layout_gravity="right"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:text="Cancel"
+            android:id="@+id/cancelButton"
+            android:textColor="@android:color/background_light"
+            android:textStyle="normal|bold"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:clickable="true"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:text="OK"
+            android:id="@+id/okButton"
+            android:textColor="@android:color/background_light"
+            android:textStyle="normal|bold"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:elevation="0dp"
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:layout_marginTop="20dp" />
+    </LinearLayout>
+
+</LinearLayout>
