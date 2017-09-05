@@ -143,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 text.setText("Please Type Something!");
 
+
             }
 
             }
