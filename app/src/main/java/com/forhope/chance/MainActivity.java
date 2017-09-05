@@ -10,9 +10,12 @@ import android.os.Vibrator;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -30,7 +33,10 @@ public class MainActivity extends AppCompatActivity {
     private Vibrator vibe;
     private double d=0;
     private int co=0;
-
+   private double a;
+    private  double b;
+    private  double c;
+    double number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayout = (LinearLayout) findViewById(R.id.root);
         window = this.getWindow();
         vibe = (Vibrator) getSystemService(this.VIBRATOR_SERVICE);
+
 // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
@@ -53,9 +60,42 @@ public class MainActivity extends AppCompatActivity {
 // finally change the color
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
+            window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
         }
+        //////////////////////
 
+       n2.addTextChangedListener(new TextWatcher() {
+           @Override
+           public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+           }
+
+           @Override
+           public void onTextChanged(CharSequence s, int start, int before, int count) {
+          task();
+           }
+
+           @Override
+           public void afterTextChanged(Editable s) {
+
+           }
+       });
+        n1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                task();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
@@ -64,15 +104,8 @@ public class MainActivity extends AppCompatActivity {
                 vibe.vibrate(100);
 
                 if (!isEmpty(n2) ) {
-                    double a;
-                    if (!isEmpty(n1)) {
-                         a = Double.parseDouble(n1.getText().toString());
-                    } else {
-                         a = 100.0;
-                    }
 
-                double b = Double.parseDouble(n2.getText().toString());
-                if(b>a) {
+                 if(b>a) {
                     text.setText("The First Number Should be Higher!");
                 } else {
 
@@ -82,12 +115,14 @@ public class MainActivity extends AppCompatActivity {
                         d=c;
                     }
 
+                    //Won the game aka luck is true
                     if (exp(c/100))
                     {
+                        boo.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
                         boo.setText("Nice Luck! After " +prob+" Times!");
                         linearLayout.setBackgroundColor(Color.parseColor("#1cd13a"));
-                        button.setBackgroundColor(Color.parseColor("#ff669900"));
-                        button.setTextColor(Color.parseColor("#ff99cc00"));
+                        //button.setBackgroundColor(Color.parseColor("#ff669900"));
+                        //button.setTextColor(Color.parseColor("#ff99cc00"));
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             window.setStatusBarColor(Color.parseColor("#1cd13a"));
                         }
@@ -95,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                         dialog.setTitle("Set Label");
                         dialog.setContentView(R.layout.dialog_signin);
                         dialog.show();
+                        dialog.setCanceledOnTouchOutside(false);
                         TextView label = (TextView) dialog.findViewById(R.id.Labeltext);
                         label.setText("Nice Luck! After " +prob+" Times!");
                         prob = 0;
@@ -112,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                         okButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                EditText name = (EditText) dialog.findViewById(R.id.getLabel);
+                               // EditText name = (EditText) dialog.findViewById(R.id.getLabel);
                                // Toast.makeText(getApplication(), "You have won " + co + " times out of " + prob  ,
                                        // Toast.LENGTH_LONG).show();
                                 dialog.dismiss();
@@ -125,19 +161,20 @@ public class MainActivity extends AppCompatActivity {
 
 
                     } else {
+                        boo.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.slide_in_left));
                         boo.setText("Try Again!");
 
                         prob = prob+1;
                         linearLayout.setBackgroundColor(Color.parseColor("#ffff4444"));
-                        button.setBackgroundColor(Color.parseColor("#d93030"));
-                        button.setTextColor(Color.parseColor("#8b0404"));
+                       // button.setBackgroundColor(Color.parseColor("#d93030"));
+                      //  button.setTextColor(Color.parseColor("#8b0404"));
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             window.setStatusBarColor(Color.parseColor("#ffff4444"));
                         }
                     }
                     double number = (int)Math.round(c * 100)/(double)100;
 
-                    text.setText("YOUR CHANCE IS " + number + "%");
+                    text.setText("YOUR LUCK METER IS " + number + "%");
                 }
 
             } else {
@@ -162,6 +199,26 @@ public class MainActivity extends AppCompatActivity {
     {
         return Math.random() >= 1.0 - probabilityTrue;
     }
+   private void task() {
+        if(!isEmpty(n2)) {
+            b=Double.parseDouble(n2.getText().toString());
+            if (!isEmpty(n1)) {
+                a = Double.parseDouble(n1.getText().toString());
+            } else {
+                a = 100.0;
+            }
+            if(b>a) {
+                text.setText("The First Number Should be Higher!");
+            } else {
+                c = (b / a) * 100;
+                number = (int) Math.round(c * 100) / (double) 100;
+                text.setText("YOUR LUCK METER IS " + number + "%");
+            }
+        }else{
+            text.setText("YOUR LUCK METER IS " + 0 + "%");
+        }
 
+
+}
 }
 

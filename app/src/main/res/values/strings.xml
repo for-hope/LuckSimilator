@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Chance</string>
+    <string name="app_name">Luck Simulator</string>
+    <string name="your_luck_is">Your Luck is</string>
+    <string name="_0">0</string>
+    <string name="_100_default">100 (default)</string>
+    <string name="out_of">Out of</string>
+    <string name="test_your_luck">Test Your Luck!</string>
+    <string name="tryit">Try!</string>
+    <string name="your_luck_meter_is_00">Your Luck Meter is 00%</string>
 </resources>

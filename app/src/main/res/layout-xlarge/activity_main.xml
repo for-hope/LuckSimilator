@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
@@ -8,11 +8,14 @@
     android:background="@color/colorPrimary"
     tools:context="com.forhope.chance.MainActivity"
     tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="25dp">
+    tools:layout_editor_absoluteY="25dp"
+    android:orientation="vertical"
+    android:baselineAligned="false">
+
 
     <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="1189dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="8dp">
 
@@ -20,91 +23,123 @@
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/bool"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="95dp"
             android:fontFamily="sans-serif"
-            android:text="Your chance is 00%"
+            android:text="Your Luck Meter is 00%"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@android:color/background_light"
-            android:textSize="30sp"
+            android:textSize="50sp"
             android:textStyle="bold"
-            android:typeface="sans" />
+            android:typeface="sans"
+            android:layout_marginBottom="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
         <EditText
             android:id="@+id/secNumber"
-            android:layout_width="500dp"
-            android:layout_height="60dp"
-            android:layout_alignLeft="@+id/fullNumber"
-            android:layout_alignStart="@+id/fullNumber"
-            android:layout_below="@+id/fullNumber"
-            android:layout_marginTop="106dp"
-            android:backgroundTint="@android:color/holo_red_dark"
-            android:ems="10"
-            android:hint="Percentage  (default"
-            android:inputType="number"
-            android:textColorHint="@android:color/darker_gray" />
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView"
+            android:layout_alignBottom="@+id/textView"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/textView"
+            android:layout_toRightOf="@+id/textView"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:hint="0"
+            android:inputType="number|numberDecimal"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="30sp"
+            tools:targetApi="lollipop" />
 
         <EditText
             android:id="@+id/fullNumber"
-            android:layout_width="500dp"
-            android:layout_height="60dp"
-            android:layout_below="@+id/label"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="239dp"
-            android:backgroundTint="@android:color/holo_red_dark"
-            android:ems="10"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/label"
+            android:layout_alignBottom="@+id/label"
+            android:layout_alignEnd="@+id/secNumber"
+            android:layout_alignRight="@+id/secNumber"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:ems="010"
             android:hint="100 (default)"
             android:inputType="number"
-            android:textColorHint="@android:color/darker_gray" />
+            android:textAllCaps="false"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="26sp" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/label"
+            android:layout_above="@+id/textView8"
             android:layout_alignWithParentIfMissing="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="33dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="My Chance!"
+            android:layout_marginBottom="70dp"
+            android:background="@android:color/holo_orange_dark"
+            android:padding="30dp"
+            android:paddingEnd="60dp"
+            android:paddingStart="60dp"
+            android:text="Try!"
             android:textAlignment="center"
-            android:textColor="@color/colorAccent"
-            android:textStyle="bold" />
+            android:textColor="@android:color/background_light"
+            android:textColorLink="@android:color/background_light"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="186dp"
+            tools:layout_editor_absoluteY="-66dp" />
 
         <TextView
             android:id="@+id/label"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="25dp"
+            android:layout_alignTop="@+id/textView"
+            android:layout_marginEnd="11dp"
+            android:layout_marginRight="11dp"
+            android:layout_marginTop="51dp"
+            android:layout_toLeftOf="@+id/fullNumber"
+            android:layout_toStartOf="@+id/fullNumber"
             android:fontFamily="sans-serif"
-            android:text="Please type full number and the percentage of it "
+            android:padding="10dp"
+            android:text="Out of"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@android:color/background_light"
-            android:textSize="40sp"
+            android:textSize="54sp"
             android:textStyle="bold"
             android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:fontFamily="sans-serif"
+            android:text="Your Luck is"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textColor="@android:color/background_light"
+            android:textSize="54sp"
+            android:textStyle="bold"
+            android:typeface="sans"
+            android:layout_below="@+id/bool"
+            android:layout_alignRight="@+id/button"
+            android:layout_alignEnd="@+id/button" />
 
         <TextView
             android:id="@+id/bool"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="28dp"
+            android:layout_marginTop="115dp"
+            android:text="Test Your Luck!"
             android:textAlignment="center"
             android:textAppearance="@android:style/TextAppearance.Material.Medium"
             android:textColor="@android:color/background_light"
             android:textSize="50sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
